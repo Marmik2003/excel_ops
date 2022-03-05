@@ -28,7 +28,7 @@ class GetExcel:
             self.topics_sheet.cell(row=i, column=max_subtopic_length).value = '=INDEX($B1:$' + col_letter2 + str(tl)\
                                                                               + ';MATCH(\'Main\'!$A' + str(i+1) + \
                                                                               ',$A1:$A' + str(tl) + ',0))'
-        self.topics_sheet.sheet_state = 'hidden'
+        self.topics_sheet.sheet_state = 'veryHidden'
         self.topics_sheet[get_column_letter(max_subtopic_length*2) + '1'] = ' '
 
     def create(self):
