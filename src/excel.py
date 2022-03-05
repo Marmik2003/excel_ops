@@ -68,6 +68,14 @@ class GetExcel:
         self.ws.add_data_validation(numopts_dv)
         numopts_dv.add('E2:E5000')
 
+        answer_dv = DataValidation(
+            type="list",
+            formula1='"{}"'.format(','.join(["Option " + str(i) for i in range(1, 9)])),
+            allow_blank=False
+        )
+        self.ws.add_data_validation(answer_dv)
+        answer_dv.add('N2:N5000')
+
         difficulty_dv = DataValidation(
             type="list",
             formula1='"Easy, Medium, Hard"',
@@ -75,5 +83,8 @@ class GetExcel:
         )
         self.ws.add_data_validation(difficulty_dv)
         difficulty_dv.add('P2:P5000')
+
+        for i in range(1, 20):
+            self.ws.column_dimensions[get_column_letter(i)].width = 150
 
         return self.wb
